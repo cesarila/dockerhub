@@ -11,9 +11,13 @@ jobs:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     strategy:
+      max-parallel: 1
       matrix:
-        build-context: [ubuntu/20.04, python/3.9-venv-ubuntu]
-        image-name: [cesarila/ubuntu, cesarila/python]
+        include:
+          - build-context: ubuntu/20.04
+            image-name: cesarila/ubuntu
+          - build-context: python/3.9-venv-ubuntu
+            image-name: cesarila/python
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
