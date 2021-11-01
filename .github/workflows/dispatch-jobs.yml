@@ -9,23 +9,23 @@ on:
 jobs:
   decide-what-to-push:
     steps:
-      uses: dorny/paths-filter@v2
-      id: filter
-      with:
-        filters: |
-          python:
-            - modified: 'python/3.9-venv-ubuntu/Dockerfile'
-          ubuntu:
-            - modified: 'ubuntu/20.04/Dockerfile'
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            python:
+              - modified: 'python/3.9-venv-ubuntu/Dockerfile'
+            ubuntu:
+              - modified: 'ubuntu/20.04/Dockerfile'
       - name: publish ubuntu image
         if: steps.filter.ubuntu == 'true'
         uses: ./.github/actions/push-docker-image
-          with:
-            build-context: ubuntu/20.04
-            image-name: cesarila/ubuntu
+        with:
+          build-context: ubuntu/20.04
+          image-name: cesarila/ubuntu
       - name: publish python image
         if: steps.filter.python == 'true'
         uses: ./.github/actions/push-docker-image
-          with:
-            build-context: python/3.9-venv-ubuntu
-            image-name: cesarila/python
+        with:
+          build-context: python/3.9-venv-ubuntu
+          image-name: cesarila/python
