@@ -8,6 +8,8 @@ on:
 
 jobs:
   decide-what-to-push:
+    name: Only push changed images
+    runs-on: ubuntu-latest
     steps:
       - uses: dorny/paths-filter@v2
         id: filter
