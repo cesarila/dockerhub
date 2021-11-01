@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        build-context: [.ubuntu/20.04, .python/3.9-venv-ubuntu]
+        build-context: [ubuntu/20.04, python/3.9-venv-ubuntu]
         image-name: [cesarila/ubuntu, cesarila/python]
     steps:
       - name: Check out the repo
