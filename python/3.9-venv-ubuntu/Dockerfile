@@ -1,4 +1,4 @@
-FROM cesarila/ubuntu-base:latest
+FROM cesarila/ubuntu:sha-35b91ce
 
 USER root
 RUN apt-get update && \
