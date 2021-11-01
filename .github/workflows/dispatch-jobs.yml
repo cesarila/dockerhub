@@ -11,6 +11,9 @@ jobs:
     name: Only push changed images
     runs-on: ubuntu-latest
     steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+        
       - uses: dorny/paths-filter@v2
         id: filter
         with:
