@@ -19,13 +19,13 @@ jobs:
             - modified: 'ubuntu/20.04/Dockerfile'
       - name: publish ubuntu image
         if: steps.filter.ubuntu == 'true'
-        uses: .github/actions/docker-image.yml
+        uses: ./.github/actions/push-docker-image
           with:
             build-context: ubuntu/20.04
             image-name: cesarila/ubuntu
       - name: publish python image
         if: steps.filter.python == 'true'
-        uses: .github/actions/docker-image.yml
+        uses: ./.github/actions/push-docker-image
           with:
             build-context: python/3.9-venv-ubuntu
             image-name: cesarila/python
